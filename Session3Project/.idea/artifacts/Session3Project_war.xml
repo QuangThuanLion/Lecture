@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Session3Project:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Session3Project</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Session3Project-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Session3Project:war exploded" />
+    </root>
+  </artifact>
+</component>
