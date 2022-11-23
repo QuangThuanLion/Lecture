@@ -47,14 +47,12 @@ public class HomeServletController extends HttpServlet {
                     .filter(x -> item.getCategory().getId() != null && item.getCategory().getId().equals(x.getId()))
                     .findFirst();
 
-            if (category.isPresent()) {
-                out.println("<li>Product Category: " + category.get().getName() + "</li>");
-            } else {
-                out.println("<li>There is no such category:</li>");
-            }
+            category.ifPresentOrElse(
+                    x -> out.println("<li>Product Category: " + x.getName() + "</li>"),
+                    () -> out.println("<li>There is no such category:</li>"));
 
-            String contentPath = request.getContextPath() + "/detail-servlet-controller?productId="+item.getId();
-            out.println("<a href='"+contentPath+"'>CLick Go To Detail Product<a/>");
+            String contentPath = request.getContextPath() + "/detail-servlet-controller?productId=" + item.getId();
+            out.println("<a href='" + contentPath + "'>CLick Go To Detail Product<a/>");
 
             out.println("<br/>");
             out.println("<br/>");
