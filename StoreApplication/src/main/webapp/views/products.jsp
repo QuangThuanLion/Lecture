@@ -55,6 +55,7 @@
                     <td>${product.updatedTime}</td>
                     <td>${product.status}</td>
                     <td>${product.categoryName}</td>
+
                     <td><a type="button" class="btn btn-primary btn-sm" href="add-product-servlet?productId=${product.id}">Update</a></td>
                     <td><button class="btn btn-danger btn-sm" onclick="confirmDeleteDialog(${product.id})">Delete</button></td>
                 </tr>

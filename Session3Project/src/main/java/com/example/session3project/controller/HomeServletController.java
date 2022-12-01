@@ -31,6 +31,8 @@ public class HomeServletController extends HttpServlet {
 
         out.println("<html><body>");
         out.println("<h1>Product List</h1>");
+        String requestBtnAdd = request.getContextPath() + "/create-product-controller";
+        out.println("<a href='" + requestBtnAdd + "'>Add Product<a/>");
 
         out.println("<ul>");
         for (Product item : products) {
@@ -64,6 +66,7 @@ public class HomeServletController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         super.doPost(req, resp);
     }
 

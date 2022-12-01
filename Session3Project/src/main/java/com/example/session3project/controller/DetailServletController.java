@@ -43,6 +43,9 @@ public class DetailServletController extends HttpServlet {
 
         out.println("<li>Product Category: " + category.get().getName() + "</li>");
 
+        String contentPath = request.getContextPath() + "/home-servlet-controller";
+        out.println("<a href='" + contentPath + "'>Back To Home Page<a/>");
+
         out.println("</body></html>");
     }
 

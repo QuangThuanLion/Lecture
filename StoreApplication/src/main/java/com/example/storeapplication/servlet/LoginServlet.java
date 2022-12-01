@@ -10,6 +10,7 @@ import java.util.Optional;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,7 +45,10 @@ public class LoginServlet extends HttpServlet {
         account.ifPresentOrElse(x -> {
                     final String requestURL = request.getContextPath() + "/products-servlet";
                     HttpSession session = request.getSession();
-                    session.setAttribute("account", account);
+                    session.setAttribute(MappingUtils.SESSION_NAME, account);
+                    Cookie cookie = new Cookie(MappingUtils.COOKIE_NAME, account.get().getEmail());
+                    cookie.setMaxAge(60*60*60*24);
+                    response.addCookie(cookie);
 
                     try {
                         response.sendRedirect(requestURL);

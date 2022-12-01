@@ -1,5 +1,6 @@
 package com.example.storeapplication.servlet;
 
+import com.example.storeapplication.constant.MappingUtils;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -29,7 +30,19 @@ public class FilterServlet implements Filter
         final String requestURI = request.getRequestURI();
         final String defaultHomePageURL = request.getContextPath() + "/";
         final String loginURI = request.getContextPath() + "/login-servlet";
-        boolean loggedIn = session != null && session.getAttribute("account") != null;
+        boolean loggedIn = session != null && session.getAttribute(MappingUtils.SESSION_NAME) != null;
+
+//        final Cookie[] cookies = request.getCookies();
+//        if(cookies != null && requestURI.equals(defaultHomePageURL)) {
+//            for(Cookie cookie : cookies) {
+//                String cookieName = cookie.getName();
+//                if(cookieName.equalsIgnoreCase(MappingUtils.COOKIE_NAME)) {
+//                    final String requestURL = "/StoreApplication/products-servlet";
+//                    response.sendRedirect(requestURL);
+//                    return;
+//                }
+//            }
+//        }
 
         if (!loggedIn && requestURI.equals(loginURI)) {
             filterChain.doFilter(servletRequest, servletResponse);
