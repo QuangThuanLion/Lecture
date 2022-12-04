@@ -12,6 +12,18 @@ public class ProductDTO {
     private Timestamp createdTime;
     private Integer categoryId;
 
+    public ProductDTO() {
+    }
+
+    public ProductDTO(String name, Double price, String description, Boolean status, Timestamp createdTime, Integer categoryId) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.status = status;
+        this.createdTime = createdTime;
+        this.categoryId = categoryId;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+<!--    <servlet>-->
+<!--        <servlet-name>HomeServlet</servlet-name>-->
+<!--        <servlet-class>com.example.firstproject.HomeServlet</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>HomeServlet</servlet-name>-->
+<!--        <url-pattern>/home-servlet</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+    <context-param>
+        <param-name>name</param-name>
+        <param-value>Hello Anh em</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>website</param-name>
+        <param-value>Huong Dan Java</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>initParamServlet</servlet-name>
+        <servlet-class>com.example.firstproject.InitParamServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+
+        <init-param>
+            <param-name>emailSupport1</param-name>
+            <param-value>abc@example.com</param-value>
+        </init-param>
+        <init-param>
+            <param-name>emailSupport2</param-name>
+            <param-value>tom@example.com</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>initParamServlet</servlet-name>
+        <url-pattern>/initial-Param-Servlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
