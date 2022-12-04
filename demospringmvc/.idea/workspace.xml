@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="demospringmvc:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5a9d7d37-16f7-4684-a17b-fd7da2299075" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/controller/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/controller/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/dto/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/dto/ProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/WEB-INF/views/product-page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/WEB-INF/views/product-page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/controller/HomePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/dto/ProductDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/dto/ProductDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/repositories/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/repositories/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/controller/HomePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demospring/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demospring/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demospring/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demospring/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demospring/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demospring/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotation/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotation/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotation/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotation/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotationway2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotationway2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotationway2/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotationway2/src/main/webapp/index.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2IIuv7q1ysl3No54jAWY22z58bU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.68" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.68" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="demospringmvc:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/demospringmvc" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="45f0f6bd-fb60-495f-a7e9-3dd38c22e213" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="59460" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="demospringmvc:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a9d7d37-16f7-4684-a17b-fd7da2299075" name="Changes" comment="" />
+      <created>1669881647548</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669881647548</updated>
+      <workItem from="1669881648895" duration="28770000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
