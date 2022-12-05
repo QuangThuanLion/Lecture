@@ -68,7 +68,7 @@ public class HomePageController {
 //        final boolean status = Boolean.parseBoolean(request.getParameter("status"));
 //        final Integer categoryId = Integer.valueOf(request.getParameter("categoryId"));
 
-
+        productDTO.setCreatedTime(new Timestamp(new Date().getTime()));
         BeanUtils.populate(productDTO, request.getParameterMap());
 
 //        ProductDTO productDTO = new ProductDTO(name, price, description, status, new Timestamp(new Date().getTime()), categoryId);

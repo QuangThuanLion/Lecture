@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>PRODUCT LIST FROM DATABASE</h1>
+<a href="create-product">Create Product</a>
 <ul>
   <c:forEach var="product" items="${products}">
     <li>${product.id}</li>
@@ -16,6 +17,7 @@
     <li>${product.createdTime}</li>
     <li>${product.status}</li>
     <li>${product.categoryId}</li>
+    <li><a href="product-detail/${product.id}">Click me to Product Detail</a></li>
     </br>
   </c:forEach>
 </ul>
