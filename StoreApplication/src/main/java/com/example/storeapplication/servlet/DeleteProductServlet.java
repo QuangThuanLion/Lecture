@@ -2,7 +2,6 @@ package com.example.storeapplication.servlet;
 
 import com.example.storeapplication.common.FunctionUtils;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Optional;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

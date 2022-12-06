@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomePageController {
@@ -24,7 +26,8 @@ public class HomePageController {
         return "hello";
     }
 
-    @GetMapping("/product")
+//    @GetMapping("/product")
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String productList(Model model) {
         List<Product> products = productRepository.getAllListProduct();
         model.addAttribute("products", products);

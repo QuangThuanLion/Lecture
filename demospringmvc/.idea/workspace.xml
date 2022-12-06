@@ -10,13 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a9d7d37-16f7-4684-a17b-fd7da2299075" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/dto/CategoryDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/mapper/CategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/WEB-INF/views/product-detail-page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/config/ApplicationContextConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/config/ApplicationContextConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/WEB-INF/views/category-page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/controller/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/controller/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/java/com/mvc/project/repositories/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/WEB-INF/views/create-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/WEB-INF/views/create-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/controller/HomePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/repositories/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/repositories/CategoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/repositories/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/classes/com/mvc/project/repositories/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/controller/HomePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/repositories/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/repositories/CategoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/repositories/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/classes/com/mvc/project/repositories/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/views/create-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/WEB-INF/views/create-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstProjectSpringMvc/target/springmvcproject/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotationway2/src/main/java/com/mvc/project/anotation/controller/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotationway2/src/main/java/com/mvc/project/anotation/controller/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotationway2/target/classes/com/mvc/project/anotation/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotationway2/target/classes/com/mvc/project/anotation/controller/HomePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springmvcconfiganotationway2/target/springmvcconfiganotationway2/WEB-INF/classes/com/mvc/project/anotation/controller/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../springmvcconfiganotationway2/target/springmvcconfiganotationway2/WEB-INF/classes/com/mvc/project/anotation/controller/HomePageController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +82,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;6571eaabf537e447068c17621bbe6115&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -179,6 +191,8 @@
       <option name="presentableId" value="Default" />
       <updated>1669881647548</updated>
       <workItem from="1669881648895" duration="28770000" />
+      <workItem from="1670210590853" duration="118000" />
+      <workItem from="1670210734580" duration="17000" />
     </task>
     <servers />
   </component>

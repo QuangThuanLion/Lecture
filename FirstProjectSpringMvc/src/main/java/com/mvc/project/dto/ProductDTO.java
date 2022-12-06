@@ -1,7 +1,17 @@
 package com.mvc.project.dto;
 
 import java.sql.Timestamp;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class ProductDTO {
 
     private Integer id;
@@ -11,60 +21,17 @@ public class ProductDTO {
     private Boolean status;
     private Timestamp createdTime;
     private Integer categoryId;
+    private String categoryName;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public ProductDTO(Integer id, String name, Double price,
+                      String description, Boolean status,
+                      Timestamp createdTime, Integer categoryId) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
         this.status = status;
-    }
-
-    public Timestamp getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Timestamp createdTime) {
         this.createdTime = createdTime;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 }

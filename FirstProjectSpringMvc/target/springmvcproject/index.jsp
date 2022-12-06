@@ -1,8 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
-<body>
-<h2>Hello World!</h2>
-<a href="home-page">Click me to Home Page</a>
-<br/>
-<a href="products">Click me to product list</a>
+<head>
+    <title>Home Page</title>
+</head>
+    <c:redirect url="/login" />
 </body>
 </html>
