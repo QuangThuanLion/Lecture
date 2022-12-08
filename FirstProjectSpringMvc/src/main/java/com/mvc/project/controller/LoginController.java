@@ -1,5 +1,6 @@
 package com.mvc.project.controller;
 
+import com.mvc.project.config.CustomValidator;
 import com.mvc.project.constant.MappingUtils;
 import com.mvc.project.dto.UserDTO;
 import com.mvc.project.repositories.UserRepository;
@@ -7,12 +8,14 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -20,24 +23,81 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CustomValidator customValidator;
+
     @GetMapping(value = "/login")
-    public String loginPage() {
+    public String loginPage(Model model) {
+        model.addAttribute("userDTO", new UserDTO());
         return "login-page";
     }
 
     /**
-     * @param email
-     * @param password
+     * @param userDTO
+     * @param bindingResult
      * @param model
      * @param request
      * @return
      */
-    @PostMapping(path = "/login")
-    public String login(@RequestParam(name = "email", defaultValue = "admin@gmail.com") String email,
-                        @RequestParam(name = "password", defaultValue = "admin") String password,
+    @PostMapping(path = "/loginFirst")
+    public String loginFirstWithValidationAutomatic(@Valid @ModelAttribute(name = "userDTO") UserDTO userDTO,
+                                                    BindingResult bindingResult,
+                                                    Model model,
+                                                    HttpServletRequest request)
+    {
+        return bindingModelLogin(userDTO, bindingResult, model, request);
+    }
+
+    /**
+     * @param userDTO
+     * @param errors
+     * @param model
+     * @param request
+     * @return
+     */
+    @PostMapping(path = "/loginSecond")
+    public String loginWithValidationManual(@ModelAttribute(name = "userDTO") UserDTO userDTO,
+                        BindingResult errors,
                         Model model,
-                        HttpServletRequest request) {
-        UserDTO users = userRepository.findByUsernameAndPassword(email, password);
+                        HttpServletRequest request)
+    {
+        if (userDTO.getName().isEmpty()) {
+            errors.rejectValue("name", "userDTO", "Please enter username");
+        }
+        if (userDTO.getPassword().isEmpty()) {
+            errors.rejectValue("password", "userDTO", "Please enter password");
+        }
+        return bindingModelLogin(userDTO, errors, model, request);
+    }
+
+    @PostMapping(path = "/login")
+    public String loginFirstWithValidationCustom(@ModelAttribute(name = "userDTO") UserDTO userDTO,
+                                                 BindingResult errors,
+                                                 Model model,
+                                                 HttpServletRequest request)
+    {
+        customValidator.validate(userDTO, errors);
+        return bindingModelLogin(userDTO, errors, model, request);
+    }
+
+    /**
+     * @param userDTO
+     * @param errors
+     * @param model
+     * @param request
+     * @return
+     */
+    private String bindingModelLogin(@ModelAttribute(name = "userDTO") UserDTO userDTO,
+                                     BindingResult errors,
+                                     Model model,
+                                     HttpServletRequest request)
+    {
+        if (errors.hasErrors())
+        {
+            return "login-page";
+        }
+
+        UserDTO users = userRepository.findByUsernameAndPassword(userDTO.getName(), userDTO.getPassword());
         AtomicReference<String> directory = new AtomicReference<>("login-page");
 
         Optional.ofNullable(users).ifPresentOrElse(

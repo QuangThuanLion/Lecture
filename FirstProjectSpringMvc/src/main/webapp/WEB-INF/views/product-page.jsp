@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>List Product</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -13,13 +13,14 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
-<div class="container">
+<div class="container" style="margin-top: 20px;">
     <div style="display: flex; align-items: center; justify-content: space-between">
         <h2>PRODUCT LIST</h2>
         <div>
             <a type="button" class="btn btn-warning" href="logout-controller">LOGOUT</a>
         </div>
     </div>
+    <a href="categories">Click To Category List</a>
     <form action="products-search" method="post">
         <div class="container mt-3">
             <div class="input-group mb-3" style="display: flex">

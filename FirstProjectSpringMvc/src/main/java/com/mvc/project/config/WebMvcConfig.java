@@ -1,6 +1,9 @@
 package com.mvc.project.config;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -28,5 +31,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         InterceptorConfig interceptorConfig = new InterceptorConfig();
         registry.addInterceptor(interceptorConfig).addPathPatterns("/*");
         super.addInterceptors(registry);
+    }
+
+    @Bean(name = "messageSource")
+    public MessageSource getMessageSource() {
+        ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
+        source.setBasename("classpath:static/i18n/messages/messages");
+        source.setDefaultEncoding("UTF-8");
+        return source;
     }
 }

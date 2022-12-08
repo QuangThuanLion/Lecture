@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -66,7 +67,9 @@
     }
     .back { text-align: left; margin-top:10px;}
     .back a {color: #444444; font-size: 13px;text-decoration: none;}
-
+    .error {
+        color: red; font-weight: bold;
+    }
 </style>
 <body id="LoginForm">
 <div class="container" style="margin-top: 100px;">
@@ -76,22 +79,18 @@
                 <h2>Admin Login</h2>
                 <p>Please enter your email and password</p>
             </div>
-            <form action="login" method="post">
-
+            <form:form action="login" method="post" modelAttribute="userDTO">
                 <div class="form-group">
-
-
-                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email Address">
-
+                    <form:input type="text" path="name" class="form-control" placeholder="Email Address" />
+                    <span><form:errors cssClass="error" path="name"/></span>
                 </div>
 
                 <div class="form-group">
-
-                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
-
+                    <form:input type="password" class="form-control" path="password" placeholder="Password" />
+                    <span><form:errors cssClass="error" path="password"/></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+            </form:form>
             <c:if test="${not empty message}">
                 <div class="alert alert-danger" role="alert">
                         ${message}

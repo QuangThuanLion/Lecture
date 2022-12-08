@@ -1,6 +1,5 @@
 package com.mvc.project.controller;
 
-import com.mvc.project.dto.CategoryDTO;
 import com.mvc.project.repositories.CategoryRepository;
 import java.util.Arrays;
 import java.util.List;
@@ -26,17 +25,6 @@ public class HomePageController {
         model.addAttribute("products", products);
         model.addAttribute("message", "WELCOME TO PRODUCTS LIST");
         return "home-page";
-    }
-
-    /**
-     * @param model
-     * @return
-     */
-    @GetMapping(path = "/categories")
-    public String categories(Model model) {
-        List<CategoryDTO> categories = categoryRepository.getAllCategory();
-        model.addAttribute("categories", categories);
-        return "category-page";
     }
 
     /**
