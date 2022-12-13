@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -30,7 +31,9 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Images</th>
             <th>Update</th>
+            <th>Download</th>
         </tr>
         </thead>
         <tbody>
@@ -38,7 +41,12 @@
             <td>${category.id}</td>
             <td>${category.name}</td>
             <td>${category.description}</td>
+            <td>
+                <img style="width: 150px; height: 150px"
+                     src="<c:url value='/resources/images/category/image_1.png'/>" />
+            </td>
             <td><a type="button" class="btn btn-primary btn-sm" href="category/${category.id}/update">Update</a></td>
+            <td><a type="button" class="btn btn-danger btn-sm" href="category/${category.thumbnail}/download-file">Download</a></td>
             </tr>
         </c:forEach>
         </tbody>

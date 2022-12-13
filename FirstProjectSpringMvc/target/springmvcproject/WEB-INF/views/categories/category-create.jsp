@@ -21,6 +21,7 @@
 <div class="container">
     <h2>Create Category Form</h2>
     <form:form ction="create-category" method="post" modelAttribute="categoryDTO"
+          enctype="multipart/form-data"
           onsubmit="return dialogConfirmationCreateCategory()">
         <div class="form-group">
             <label for="name">Category Name:</label>
@@ -33,6 +34,12 @@
             <form:textarea path="description" rows="7" class="form-control"
                            placeholder="Enter Description"/>
             <span><form:errors cssClass="error" path="description"/></span>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <b><span>Category Images</span></b>
+                <input type="file" name="category_image" class="form-control">
+            </div>
         </div>
         <button onclick="checkCreateConfirmation()" class="btn btn-default">Create</button>
     </form:form>

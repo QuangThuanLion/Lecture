@@ -55,10 +55,13 @@
       </select>
     </div>
     <button onclick="checkCreateConfirmation()" class="btn btn-default">Create</button>
+    <input class="btn btn-default" onclick="onClickAddProductAjax()" value="Click me to add Product Ajax" />
   </form>
 </div>
 </body>
 </html>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
   let text = "Do you want to create product ?";
@@ -77,5 +80,48 @@
     } else {
       return false;
     }
+  }
+
+  function onClickAddProductAjax() {
+    console.log('onClickAddProductAjax')
+    var productName = document.getElementById("product_name").value;
+    var productPrice = document.getElementById("price").value;
+    var productDescription = document.getElementById("description").value;
+    var available = document.getElementById("available").value;
+    var not_available = document.getElementById("not_available").value;
+    var productCategory = document.getElementById("categoryId").value;
+    var payload = {
+      "name" : productName,
+      "price": productPrice,
+      "description" : productDescription,
+      "status" : available != null ? available : not_available,
+      "categoryId": productCategory
+    }
+    $.ajax({
+      url: '/springmvcproject/create-product/rest-api',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(payload),
+      success: function(result) {
+        console.log(result)
+        // if(result.success) {
+        //   var data = result.data;
+        //   var listMedicalHistory = data[0];
+        //   var listAppointmentStatus = data[1];
+        //   getListMedicalHistory(listMedicalHistory, listAppointmentStatus);
+        // }
+      },
+      error: function(error) {
+        if(!error.success) {
+          console.log("ERROR");
+          // window.location.href='/admin/medical-history';
+        }
+      },
+      done: function(e) {
+        console.log("e",e);
+        console.log("DONE");
+        // window.location.href='/admin/medical-history'
+      }
+    })
   }
 </script>

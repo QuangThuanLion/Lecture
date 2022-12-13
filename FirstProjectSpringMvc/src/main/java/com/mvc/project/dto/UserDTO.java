@@ -16,12 +16,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Setter
 public class UserDTO {
 
-    @NotEmpty(message = "username cannot empty")
-    @NotNull(message = "username cannot null")
-    @Email(message = "invalid formatter email. Please correct format !")
+//    @NotEmpty(message = "username cannot empty")
+//    @NotNull(message = "username cannot null")
+//    @Email(message = "invalid formatter email. Please correct format !")
+//    private String name;
+//
+//    @NotNull(message = "password cannot null")
+//    @NotEmpty(message = "password cannot empty")
+//    private String password;
+
     private String name;
 
-    @NotNull(message = "password cannot null")
-    @NotEmpty(message = "password cannot empty")
     private String password;
 }

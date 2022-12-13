@@ -1,20 +1,18 @@
 package com.mvc.project.controller;
 
-import com.mvc.project.repositories.CategoryRepository;
 import java.util.Arrays;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+@Controller(value = "HomePageController")
 public class HomePageController {
-    @Autowired
-    private CategoryRepository categoryRepository;
 
+    private Logger LOGGER = Logger.getLogger(HomePageController.class);
     /**
      * @param model
      * @return
@@ -31,8 +29,15 @@ public class HomePageController {
      * @Desc return default page
      * @return
      */
-    @GetMapping(path = "*")
+    @RequestMapping(path = "/**", method = RequestMethod.GET)
     public String fallBackMethod() {
-        return "fallback-page";
+        LOGGER.info("FALLBACK-METHOD");
+        return "errors/fallback-page";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/home/language")
+    public void language() {
+        System.out.println("Home language lang");
     }
 }

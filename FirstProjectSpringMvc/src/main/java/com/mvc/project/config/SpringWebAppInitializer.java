@@ -15,19 +15,23 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(ApplicationContextConfig.class);
+        appContext.setServletContext(servletContext);
 
         // Dispatcher Servlet
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("SpringDispatcher",
-                new DispatcherServlet(appContext));
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(appContext);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+
+        ServletRegistration.Dynamic dispatcher = servletContext
+                .addServlet("SpringDispatcher",dispatcherServlet);
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
 
         dispatcher.setInitParameter("contextClass", appContext.getClass().getName());
-
         servletContext.addListener(new ContextLoaderListener(appContext));
 
         // UTF8 Charactor Filter.
-        FilterRegistration.Dynamic fr = servletContext.addFilter("encodingFilter", CharacterEncodingFilter.class);
+        FilterRegistration.Dynamic fr = servletContext
+                .addFilter("encodingFilter", CharacterEncodingFilter.class);
 
         fr.setInitParameter("encoding", "UTF-8");
         fr.setInitParameter("forceEncoding", "true");

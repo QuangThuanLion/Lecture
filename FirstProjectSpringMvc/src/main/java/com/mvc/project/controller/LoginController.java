@@ -1,6 +1,6 @@
 package com.mvc.project.controller;
 
-import com.mvc.project.config.CustomValidator;
+import com.mvc.project.validator.LoginValidator;
 import com.mvc.project.constant.MappingUtils;
 import com.mvc.project.dto.UserDTO;
 import com.mvc.project.repositories.UserRepository;
@@ -16,15 +16,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller(value = "LoginController")
 public class LoginController {
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private CustomValidator customValidator;
+    private LoginValidator loginValidator;
 
     @GetMapping(value = "/login")
     public String loginPage(Model model) {
@@ -40,7 +41,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(path = "/loginFirst")
-    public String loginFirstWithValidationAutomatic(@Valid @ModelAttribute(name = "userDTO") UserDTO userDTO,
+    public ModelAndView loginFirstWithValidationAutomatic(@Valid @ModelAttribute(name = "userDTO") UserDTO userDTO,
                                                     BindingResult bindingResult,
                                                     Model model,
                                                     HttpServletRequest request)
@@ -55,8 +56,9 @@ public class LoginController {
      * @param request
      * @return
      */
-    @PostMapping(path = "/loginSecond")
-    public String loginWithValidationManual(@ModelAttribute(name = "userDTO") UserDTO userDTO,
+    @PostMapping(path = "/login")
+    public ModelAndView loginWithValidationManual(
+                        @Valid @ModelAttribute(name = "userDTO") UserDTO userDTO,
                         BindingResult errors,
                         Model model,
                         HttpServletRequest request)
@@ -70,13 +72,13 @@ public class LoginController {
         return bindingModelLogin(userDTO, errors, model, request);
     }
 
-    @PostMapping(path = "/login")
-    public String loginFirstWithValidationCustom(@ModelAttribute(name = "userDTO") UserDTO userDTO,
+    @PostMapping(path = "/loginSecond")
+    public ModelAndView loginFirstWithValidationCustom(@ModelAttribute(name = "userDTO") UserDTO userDTO,
                                                  BindingResult errors,
                                                  Model model,
                                                  HttpServletRequest request)
     {
-        customValidator.validate(userDTO, errors);
+        loginValidator.validate(userDTO, errors);
         return bindingModelLogin(userDTO, errors, model, request);
     }
 
@@ -87,14 +89,15 @@ public class LoginController {
      * @param request
      * @return
      */
-    private String bindingModelLogin(@ModelAttribute(name = "userDTO") UserDTO userDTO,
+    private ModelAndView bindingModelLogin(@ModelAttribute(name = "userDTO") UserDTO userDTO,
                                      BindingResult errors,
                                      Model model,
                                      HttpServletRequest request)
     {
         if (errors.hasErrors())
         {
-            return "login-page";
+            return new ModelAndView("login-page");
+//            return "login-page";
         }
 
         UserDTO users = userRepository.findByUsernameAndPassword(userDTO.getName(), userDTO.getPassword());
@@ -108,7 +111,8 @@ public class LoginController {
                 },
                 () -> model.addAttribute("message", MappingUtils.MESSAGE_ERROR));
 
-        return directory.get().toString();
+        return new ModelAndView(directory.get());
+//        return directory.get();
     }
 
     /**

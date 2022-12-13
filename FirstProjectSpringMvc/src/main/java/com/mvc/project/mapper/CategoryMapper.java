@@ -12,6 +12,7 @@ public class CategoryMapper implements RowMapper<CategoryDTO> {
                 .id(resultSet.getInt("id"))
                 .name(resultSet.getString("name"))
                 .description(resultSet.getString("description"))
+                .thumbnail(resultSet.getString("thumbnail"))
                 .build();
 
         return categoryDTO;

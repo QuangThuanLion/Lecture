@@ -1,9 +1,9 @@
 package com.mvc.project.controller;
 
+import com.mvc.project.IServices.IProduct;
 import com.mvc.project.dto.CategoryDTO;
 import com.mvc.project.dto.ProductDTO;
 import com.mvc.project.repositories.CategoryRepository;
-import com.mvc.project.repositories.ProductRepository;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +27,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
+@Controller(value = "ProductController")
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
+    private IProduct iProduct;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private MessageSource messageSource;
 
     /**
      * @param model
@@ -41,7 +45,7 @@ public class ProductController {
      */
     @RequestMapping(path = "/products", method = RequestMethod.GET)
     public String products(Model model) {
-        final List<ProductDTO> products = productRepository.getProductList();
+        final List<ProductDTO> products = iProduct.getProductList();
         productMappingModel(products);
 
         model.addAttribute("products", products);
@@ -56,7 +60,7 @@ public class ProductController {
     @RequestMapping(path = "/product-detail/{productId}", method = RequestMethod.GET)
     public String productDetail(@PathVariable(name = "productId") Integer productId,
                                 Model model) {
-        ProductDTO productDTO = productRepository.findByProductId(productId);
+        ProductDTO productDTO = iProduct.findByProductId(productId);
         model.addAttribute("productDTO", productDTO);
         return "product-detail-page";
     }
@@ -68,6 +72,7 @@ public class ProductController {
     @RequestMapping(path = "/create-product", method = RequestMethod.GET)
     public String createProduct(Model model) {
         List<CategoryDTO> categories = categoryRepository.getAllCategory();
+
         model.addAttribute("categories", categories);
         return "create-product";
     }
@@ -92,12 +97,12 @@ public class ProductController {
         AtomicReference<String> alert = new AtomicReference<>("danger");
         Optional.ofNullable(productDTO).ifPresent(x -> {
             message.set("Create product successfully");
-            alert.set("success");;
+            alert.set("success");
         });
 
         redirectAttributes.addFlashAttribute("message", message);
         redirectAttributes.addFlashAttribute("alert", alert);
-        productRepository.createProduct(productDTO);
+        iProduct.createProduct(productDTO);
 
         //List<ProductDTO> productDTOS = getProductDTOS();
         //productRepository.createProductWay3(productDTO);
@@ -117,7 +122,7 @@ public class ProductController {
     @RequestMapping(value = "/product/{productId}/update", method = RequestMethod.GET)
     public String updateProduct(@PathVariable(name = "productId") Integer productId,
                                 Model model) {
-        ProductDTO productDTO = productRepository.findByProductId(productId);
+        ProductDTO productDTO = iProduct.findByProductId(productId);
         List<CategoryDTO> categories = categoryRepository.getAllCategory();
 
         final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -162,7 +167,7 @@ public class ProductController {
 
         redirectAttributes.addFlashAttribute("message", message);
         redirectAttributes.addFlashAttribute("alert", alert);
-        productRepository.updateProductById(productDTO);
+        iProduct.updateProductById(productDTO);
         return "redirect:/products";
     }
 
@@ -181,9 +186,9 @@ public class ProductController {
             alert.set("success");
         });
 
-        redirectAttributes.addFlashAttribute("message", message.get().toString());
-        redirectAttributes.addFlashAttribute("alert", alert.get().toString());
-        productRepository.deleteProductById(productId);
+        redirectAttributes.addFlashAttribute("message", message.get());
+        redirectAttributes.addFlashAttribute("alert", alert.get());
+        iProduct.deleteProductById(productId);
         return "redirect:/products";
     }
 
@@ -203,7 +208,7 @@ public class ProductController {
             alert.set("success");
         });
 
-        final List<ProductDTO> products = productRepository.searchByKeyword(keyword);
+        final List<ProductDTO> products = iProduct.searchByKeyword(keyword);
         productMappingModel(products);
 
         model.addAttribute("products", products);

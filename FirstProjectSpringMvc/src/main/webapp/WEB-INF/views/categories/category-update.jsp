@@ -19,8 +19,9 @@
 </style>
 <body>
 <div class="container">
-  <h2>Create Category Form</h2>
+  <h2>Update Category Form</h2>
   <form:form action="${context}/update-category" method="post" modelAttribute="categoryDTO"
+             enctype="multipart/form-data"
              onsubmit="return dialogConfirmationCreateCagegory()">
     <div class="form-group">
       <c:if test="${not empty categoryDTO.id}">
@@ -39,6 +40,13 @@
                      placeholder="Enter Description" value="${categoryDTO.description}"/>
       <span><form:errors cssClass="error" path="description"/></span>
     </div>
+    <div class="form-group">
+      <label for="description">thumbnail:</label>
+      <input id="thumbnail" type="file" name="category_image" class="form-control"/>
+      <img style="width: 150px; height: 150px"
+           src="<c:url value='/resources/images/category/${categoryDTO.thumbnail}'/>" />
+    </div>
+    <form:input type="hidden" path="thumbnail"/>
     <c:if test="${not empty categoryDTO.id}">
       <button onclick="checkCreateConfirmation(${categoryDTO.id})" class="btn btn-default">Update</button>
     </c:if>

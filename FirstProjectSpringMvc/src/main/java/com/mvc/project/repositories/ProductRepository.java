@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 public class ProductRepository extends JdbcDaoSupport {
 
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     /**
      * @Desc injected constructor
@@ -206,20 +206,19 @@ public class ProductRepository extends JdbcDaoSupport {
      * @param productDTO
      */
     public void createProductWay2(ProductDTO productDTO) {
-        final StringBuilder queryStatement = new StringBuilder("INSERT INTO product(name, price, description, created_time, status, category_id) VALUES");
-        queryStatement.append("(")
-                .append("'").append(productDTO.getName())
-                .append("'").append(",")
-                .append(productDTO.getPrice())
-                .append(",").append("'")
-                .append(productDTO.getDescription())
-                .append("'").append(",").append("'")
-                .append(productDTO.getCreatedTime())
-                .append("'").append(",")
-                .append(productDTO.getStatus())
-                .append(",").append(productDTO.getCategoryId())
-                .append(")");
-        this.getJdbcTemplate().update(queryStatement.toString());
+        String queryStatement = "INSERT INTO product(name, price, description, created_time, status, category_id) VALUES" + "(" +
+                "'" + productDTO.getName() +
+                "'" + "," +
+                productDTO.getPrice() +
+                "," + "'" +
+                productDTO.getDescription() +
+                "'" + "," + "'" +
+                productDTO.getCreatedTime() +
+                "'" + "," +
+                productDTO.getStatus() +
+                "," + productDTO.getCategoryId() +
+                ")";
+        this.getJdbcTemplate().update(queryStatement);
     }
 
     /**

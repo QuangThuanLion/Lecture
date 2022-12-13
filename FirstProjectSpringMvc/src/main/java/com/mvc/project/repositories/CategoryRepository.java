@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CategoryRepository extends JdbcDaoSupport {
 
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Autowired
     public CategoryRepository(DataSource dataSource, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
@@ -60,7 +60,8 @@ public class CategoryRepository extends JdbcDaoSupport {
                 (rs, rowNumber) -> new CategoryDTO(
                         rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getString("description")
+                        rs.getString("description"),
+                        rs.getString("thumbnail")
                 ));
         return categories;
     }
@@ -70,8 +71,12 @@ public class CategoryRepository extends JdbcDaoSupport {
      * @param categoryDTO
      */
     public void createCategory(CategoryDTO categoryDTO) {
-        final String queryStatement = "INSERT INTO category(name,description) VALUES (? ,?)";
-        this.getJdbcTemplate().update(queryStatement, categoryDTO.getName(), categoryDTO.getDescription());
+        final String queryStatement = "INSERT INTO category(name,description, thumbnail) VALUES (? ,?, ?)";
+        this.getJdbcTemplate().update(
+                queryStatement,
+                categoryDTO.getName(),
+                categoryDTO.getDescription(),
+                categoryDTO.getThumbnail());
     }
 
     /**
@@ -91,14 +96,16 @@ public class CategoryRepository extends JdbcDaoSupport {
      * @param categoryDTO
      */
     public void updateCategory(CategoryDTO categoryDTO) {
-        StringBuilder stringBuilder = new StringBuilder("UPDATE category ")
-                .append("SET name = :name, description = :description ")
-                .append("WHERE id = :id ");
+        String stringBuilder = "UPDATE category " +
+                "SET name = :name, description = :description, " +
+                "thumbnail = :thumbnail " +
+                "WHERE id = :id ";
         Map<String, Object> params = new HashMap<>();
         params.put("name", categoryDTO.getName());
         params.put("description", categoryDTO.getDescription());
         params.put("id",categoryDTO.getId());
+        params.put("thumbnail", categoryDTO.getThumbnail());
 
-        namedParameterJdbcTemplate.update(stringBuilder.toString(), params);
+        namedParameterJdbcTemplate.update(stringBuilder, params);
     }
 }

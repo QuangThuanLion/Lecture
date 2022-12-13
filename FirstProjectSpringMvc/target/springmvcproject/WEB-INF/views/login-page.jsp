@@ -81,13 +81,16 @@
             </div>
             <form:form action="login" method="post" modelAttribute="userDTO">
                 <div class="form-group">
-                    <form:input type="text" path="name" class="form-control" placeholder="Email Address" />
+                    <form:input type="text" path="name" class="form-control"
+                                placeholder="Email Address" />
                     <span><form:errors cssClass="error" path="name"/></span>
                 </div>
 
                 <div class="form-group">
-                    <form:input type="password" class="form-control" path="password" placeholder="Password" />
-                    <span><form:errors cssClass="error" path="password"/></span>
+                    <form:input type="password" class="form-control"
+                                path="password" placeholder="Password" />
+                    <span><form:errors cssClass="error" path="password"/>
+                    </span>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form:form>
