@@ -1,8 +1,8 @@
 package com.mvc.project.controller;
 
-import com.mvc.project.IServices.IProduct;
 import com.mvc.project.dto.CategoryDTO;
 import com.mvc.project.dto.ProductDTO;
+import com.mvc.project.iservices.IProduct;
 import com.mvc.project.repositories.CategoryRepository;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller(value = "ProductController")
+@Controller
 public class ProductController {
 
     @Autowired
@@ -35,9 +34,6 @@ public class ProductController {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-    @Autowired
-    private MessageSource messageSource;
 
     /**
      * @param model

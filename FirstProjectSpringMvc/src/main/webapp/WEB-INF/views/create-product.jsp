@@ -98,29 +98,26 @@
       "categoryId": productCategory
     }
     $.ajax({
-      url: '/springmvcproject/create-product/rest-api',
+      url: '/springmvcproject/api/create-product/rest-api',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(payload),
       success: function(result) {
         console.log(result)
-        // if(result.success) {
-        //   var data = result.data;
-        //   var listMedicalHistory = data[0];
-        //   var listAppointmentStatus = data[1];
-        //   getListMedicalHistory(listMedicalHistory, listAppointmentStatus);
-        // }
+        if(result.success) {
+          console.log("result: " + result)
+        }
       },
       error: function(error) {
         if(!error.success) {
           console.log("ERROR");
-          // window.location.href='/admin/medical-history';
+          window.location.href='/springmvcproject/products';
         }
       },
       done: function(e) {
         console.log("e",e);
         console.log("DONE");
-        // window.location.href='/admin/medical-history'
+        window.location.href='/springmvcproject/products'
       }
     })
   }

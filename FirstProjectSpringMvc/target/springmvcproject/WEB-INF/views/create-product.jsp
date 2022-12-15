@@ -98,7 +98,7 @@
       "categoryId": productCategory
     }
     $.ajax({
-      url: '/springmvcproject/create-product/rest-api',
+      url: '/springmvcproject/api/create-product/rest-api',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(payload),

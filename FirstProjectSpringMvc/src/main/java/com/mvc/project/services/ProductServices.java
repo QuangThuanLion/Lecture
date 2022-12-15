@@ -1,6 +1,6 @@
 package com.mvc.project.services;
 
-import com.mvc.project.IServices.IProduct;
+import com.mvc.project.iservices.IProduct;
 import com.mvc.project.dto.ProductDTO;
 import com.mvc.project.repositories.ProductRepository;
 import java.util.List;

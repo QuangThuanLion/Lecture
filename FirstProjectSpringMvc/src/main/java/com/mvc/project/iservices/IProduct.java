@@ -1,4 +1,4 @@
-package com.mvc.project.IServices;
+package com.mvc.project.iservices;
 
 import com.mvc.project.dto.ProductDTO;
 import java.util.List;
