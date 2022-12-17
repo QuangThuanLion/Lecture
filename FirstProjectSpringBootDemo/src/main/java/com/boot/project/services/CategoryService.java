@@ -2,15 +2,14 @@ package com.boot.project.services;
 
 import com.boot.project.entities.Category;
 import com.boot.project.repositories.CategoryRepository;
-import jakarta.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CategoryService {
-
-    EntityManager entityManager;
 
     @Autowired
     CategoryRepository categoryRepository;
@@ -21,5 +20,10 @@ public class CategoryService {
 
     public List<Category> getAll() {
         return categoryRepository.findAll();
+    }
+
+    public Category findById(UUID categoryId) {
+        Optional<Category> byId = categoryRepository.findById(categoryId);
+        return byId.get();
     }
 }

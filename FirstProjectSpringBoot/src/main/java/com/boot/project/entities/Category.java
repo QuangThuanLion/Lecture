@@ -1,5 +1,6 @@
 package com.boot.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,6 +32,7 @@ public class Category {
             length = 100)
     private String categoryDescription;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "category",
             targetEntity = Product.class,
