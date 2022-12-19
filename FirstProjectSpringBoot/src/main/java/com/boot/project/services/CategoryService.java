@@ -1,6 +1,7 @@
 package com.boot.project.services;
 
 import com.boot.project.entities.Category;
+import com.boot.project.iservice.ICategory;
 import com.boot.project.repositories.CategoryRepository;
 import java.util.List;
 import java.util.UUID;
@@ -9,11 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CategoryService {
+public class CategoryService implements ICategory {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public void createCategory(Category category) throws Exception {
             try {
@@ -23,11 +25,13 @@ public class CategoryService {
             }
     }
 
+    @Override
     public List<Category> findAll() {
         List<Category> categories = categoryRepository.findAll();
         return categories;
     }
 
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public Category updateCategory(Category category, UUID categoryId) {
         category.setId(categoryId);

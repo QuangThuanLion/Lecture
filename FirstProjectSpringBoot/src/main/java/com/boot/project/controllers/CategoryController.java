@@ -1,7 +1,7 @@
 package com.boot.project.controllers;
 
 import com.boot.project.entities.Category;
-import com.boot.project.services.CategoryService;
+import com.boot.project.iservice.ICategory;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
 
     @Autowired
-    private CategoryService categoryService;
+    private ICategory iCategory;
 
     @PostMapping(path = "/categories")
     public String createCategory() {
@@ -32,7 +32,7 @@ public class CategoryController {
 
         String message = "create category successfully";
         try {
-            categoryService.createCategory(category);
+            iCategory.createCategory(category);
         } catch (Exception ex) {
             message = ex.getMessage();
         }
@@ -41,7 +41,7 @@ public class CategoryController {
 
     @GetMapping(path = "/categories")
     public List<Category> getALlCategories() {
-        List<Category> categories = categoryService.findAll();
+        List<Category> categories = iCategory.findAll();
         return categories;
     }
 
@@ -51,7 +51,7 @@ public class CategoryController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Category updateCategories(@PathVariable(name = "categoryId") UUID categoryId,
                                      @RequestBody Category category) {
-        Category updatedCategory = categoryService.updateCategory(category, categoryId);
+        Category updatedCategory = iCategory.updateCategory(category, categoryId);
         return updatedCategory;
     }
 }

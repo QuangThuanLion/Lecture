@@ -22,4 +22,34 @@ public class Student implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Student)) {
+            return false;
+        }
+
+        Student student = (Student) obj;
+        if (this.age == student.age && this.name == student.name) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return this.age;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
