@@ -15,7 +15,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 @Service
 public class ProductService implements IProduct {
@@ -44,14 +43,9 @@ public class ProductService implements IProduct {
         Optional<Category> optional = categoryRepository
                 .findById(categoryId);
 
-        Category category;
-        if (optional.isPresent())
-        {
-            category = optional.get();
-        } else {
-            throw new Exception("Cannot find any category !");
-        }
-
+        final Category category = Optional.ofNullable(optional)
+                .get()
+                .orElseThrow(() -> new Exception("Cannot find any category !"));
         Product productEntity = new Product();
         productEntity.setId(UUID.randomUUID());
         productEntity.setProductName(productRequest.getName());
@@ -74,17 +68,11 @@ public class ProductService implements IProduct {
             throws Exception
     {
         Optional<Product> optionalProduct = productRepository.findById(productId);
-        if (optionalProduct.isEmpty()) {
-            throw new Exception("Cannot find any product !");
-        }
+        Optional.ofNullable(optionalProduct).orElseThrow(() -> new Exception("Cannot find any product !"));
 
         UUID categoryId = productRequest.getCategoryId();
-        Optional<Category> optionalCategory = categoryRepository
-                .findById(categoryId);
-        if (optionalCategory.isEmpty())
-        {
-            throw new Exception("Cannot find any category !");
-        }
+        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+        Optional.ofNullable(optionalCategory).orElseThrow(() -> new Exception("Cannot find any category !"));
 
         Product productInDB = optionalProduct.get();
         productInDB.setProductName(productRequest.getName());
@@ -103,9 +91,8 @@ public class ProductService implements IProduct {
     @Transactional(rollbackFor = Exception.class)
     public void deleteProductById(UUID productId) throws Exception {
         Optional<Product> optionalProduct = productRepository.findById(productId);
-        if (optionalProduct.isEmpty()) {
-            throw new Exception("Cannot find any product !");
-        }
+        Optional.ofNullable(optionalProduct).orElseThrow(() -> new Exception("Cannot find any product !"));
+
         productRepository.deleteById(productId);
     }
 
@@ -116,12 +103,9 @@ public class ProductService implements IProduct {
     @Override
     public List<ProductDTO> getAllProductJoinCategoriesByStatus(boolean status)
     {
-        List<Map<String, Object>> result = productRepository
-                .getAllProductJoinCategoryByStatus(status);
+        List<Map<String, Object>> result = productRepository.getAllProductJoinCategoryByStatus(status);
+        Optional.ofNullable(result).orElseThrow(() -> new RuntimeException("products is empty !"));
 
-        if (StringUtils.isEmpty(result)) {
-            throw new RuntimeException("products is empty !");
-        }
         List<ProductDTO> products = new ArrayList<>();
         for (Map<String, Object> x : result) {
             ProductDTO productDTO = new ProductDTO();

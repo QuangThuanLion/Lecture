@@ -49,7 +49,7 @@ public class ProductController {
     }
 
     /**
-     * @param product
+     * @param productRequest
      * @return
      * @throws Exception
      */
@@ -57,11 +57,12 @@ public class ProductController {
     @PostMapping(value = "/products",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product createProduct(@RequestBody ProductRequest product)
+    public ResponseEntity<?> createProduct(
+            @RequestBody ProductRequest productRequest)
             throws Exception
     {
         try {
-           return iProduct.createProduct(product);
+           return new ResponseEntity<>(iProduct.createProduct(productRequest), HttpStatus.OK);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -76,11 +77,12 @@ public class ProductController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Product updateProduct(
-            @PathVariable(name = "productId") UUID productId,
+            @PathVariable(name = "productId") String productId,
             @RequestBody ProductRequest productRequest)
     {
         try {
-            return iProduct.updateProduct(productId, productRequest);
+            UUID uuidProduct = UUID.fromString(productId);
+            return iProduct.updateProduct(uuidProduct, productRequest);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

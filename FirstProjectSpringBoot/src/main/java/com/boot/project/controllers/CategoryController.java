@@ -23,6 +23,12 @@ public class CategoryController {
     @Autowired
     private ICategory iCategory;
 
+    @GetMapping(path = "/categories")
+    public List<Category> getALlCategories() {
+        List<Category> categories = iCategory.findAll();
+        return categories;
+    }
+
     @PostMapping(path = "/categories")
     public String createCategory() {
         Category category = new Category();
@@ -37,12 +43,6 @@ public class CategoryController {
             message = ex.getMessage();
         }
         return message;
-    }
-
-    @GetMapping(path = "/categories")
-    public List<Category> getALlCategories() {
-        List<Category> categories = iCategory.findAll();
-        return categories;
     }
 
     @ResponseStatus(value = HttpStatus.CREATED)

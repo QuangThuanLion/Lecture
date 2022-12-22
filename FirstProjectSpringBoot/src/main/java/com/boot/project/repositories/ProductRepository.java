@@ -13,6 +13,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID>
 {
+    /**
+     * @param status
+     * @return
+     */
     @Query(value = "SELECT p.id, p.price, p.product_name, \n" +
             "p.status, c.category_name \n" +
             "FROM products p\n" +
@@ -20,9 +24,12 @@ public interface ProductRepository extends JpaRepository<Product, UUID>
             "ON p.category_id = c.id\n" +
             "WHERE p.status = :status",
             nativeQuery = true)
-    List<Map<String, Object>> getAllProductJoinCategoryByStatus(
-            @Param(value = "status") boolean status);
+    List<Map<String, Object>> getAllProductJoinCategoryByStatus(@Param(value = "status") boolean status);
 
+    /**
+     * @param price
+     * @param status
+     */
     @Query(
             value = "UPDATE products p SET p.status = :status WHERE p.price >= :price",
             nativeQuery = true)

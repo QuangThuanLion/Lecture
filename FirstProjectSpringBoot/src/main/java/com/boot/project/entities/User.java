@@ -1,5 +1,6 @@
 package com.boot.project.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +30,10 @@ public class User {
     @Column(name = "last_name", length = 20, nullable = false)
     private String lastName;
 
-    @ManyToMany(targetEntity = Role.class, fetch = FetchType.LAZY)
+    @ManyToMany(
+            targetEntity = Role.class,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_role",
             joinColumns = @JoinColumn(
@@ -38,7 +43,7 @@ public class User {
                     name = "role_id",
                     referencedColumnName = "id")
     )
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 
     public UUID getId() {
         return id;

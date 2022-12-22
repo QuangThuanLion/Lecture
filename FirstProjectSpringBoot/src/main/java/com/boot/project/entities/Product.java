@@ -1,5 +1,6 @@
 package com.boot.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,14 +25,18 @@ public class Product {
             name = "product_name",
             nullable = false,
             length = 30)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String productName;
 
     @Column(
             name = "price",
             nullable = false)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Double price;
 
-    @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
+    @ManyToOne(
+            targetEntity = Category.class,
+            fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
@@ -39,6 +44,7 @@ public class Product {
             name = "status",
             nullable = false
     )
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean status;
 
     public UUID getId() {

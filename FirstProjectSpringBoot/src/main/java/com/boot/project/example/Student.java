@@ -1,10 +1,15 @@
 package com.boot.project.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 
 public class Student implements Serializable {
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private int age;
+
+    @JsonIgnore
     private String name;
 
     public int getAge() {

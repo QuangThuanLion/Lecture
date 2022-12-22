@@ -1,6 +1,6 @@
 package com.boot.project.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,7 +20,6 @@ public class Category {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     @Column(
             name = "category_name",
             length = 30,
@@ -32,7 +31,9 @@ public class Category {
             length = 100)
     private String categoryDescription;
 
-    @JsonIgnore
+//    @JsonManagedReference
+//    @JsonIgnore
+    @JsonBackReference("category_reference")
     @OneToMany(
             mappedBy = "category",
             targetEntity = Product.class,

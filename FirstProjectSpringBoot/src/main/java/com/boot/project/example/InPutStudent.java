@@ -12,7 +12,7 @@ import java.util.Set;
 public class InPutStudent {
     public static void main(String[] args) {
         //InPutStudent.checkProductFunctions();
-        InPutStudent.checkEqualsAndHasCode();
+        //InPutStudent.checkEqualsAndHasCode();
     }
 
     private static void checkEqualsAndHasCode() {
