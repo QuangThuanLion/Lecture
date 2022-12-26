@@ -7,6 +7,7 @@ import com.boot.project.utils.EnumRole;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,10 @@ public class RoleService implements IRole {
 
         try {
             EnumSet<EnumRole> enumRoles = EnumSet.allOf(EnumRole.class);
-            if (!enumRoles.contains(EnumRole.valueOf(roleName))) {}
+            Optional.ofNullable(enumRoles
+                    .stream()
+                    .anyMatch(x -> x.equals(EnumRole.valueOf(roleName))))
+                    .orElseThrow();
         } catch (Exception exception) {
             throw new RuntimeException("Cannot find any role name in data source");
         }
@@ -47,6 +51,7 @@ public class RoleService implements IRole {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public List<Role> getAll() {
         return roleRepository.findAll();
     }

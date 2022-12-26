@@ -7,6 +7,9 @@ import com.boot.project.iservice.IProduct;
 import com.boot.project.repositories.CategoryRepository;
 import com.boot.project.repositories.ProductRepository;
 import com.boot.project.request.ProductRequest;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +20,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@jakarta.transaction.Transactional
 public class ProductService implements IProduct {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     private ProductRepository productRepository;
@@ -25,8 +32,30 @@ public class ProductService implements IProduct {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Product> getAllListProductLazyAndEagerEntityGraph() {
+        List<Product> products = productRepository.getAllProductEntityGraph();
+        return products;
+    }
 
     @Override
+    public List<Product> getAllListProductLazyAndEagerTransaction() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Object[]> getAllListProductLazyAndEager() {
+        //final String hql = "SELECT p,c FROM Product p JOIN Category c ON p.category.id = c.id";
+        final String hql = "SELECT p FROM Product p JOIN fetch p.category";
+        TypedQuery<Object[]> query = entityManager.createQuery(hql, Object[].class);
+        List<Object[]> products = query.getResultList();
+        return products;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -42,7 +71,9 @@ public class ProductService implements IProduct {
         UUID categoryId = productRequest.getCategoryId();
         Optional<Category> optional = categoryRepository
                 .findById(categoryId);
-
+        if (optional.isEmpty()) {
+            throw new Exception("Cannot find any category !");
+        }
         final Category category = Optional.ofNullable(optional)
                 .get()
                 .orElseThrow(() -> new Exception("Cannot find any category !"));
@@ -68,11 +99,13 @@ public class ProductService implements IProduct {
             throws Exception
     {
         Optional<Product> optionalProduct = productRepository.findById(productId);
-        Optional.ofNullable(optionalProduct).orElseThrow(() -> new Exception("Cannot find any product !"));
+        Optional.ofNullable(optionalProduct).orElseThrow(
+                () -> new Exception("Cannot find any product !"));
 
         UUID categoryId = productRequest.getCategoryId();
         Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
-        Optional.ofNullable(optionalCategory).orElseThrow(() -> new Exception("Cannot find any category !"));
+        Optional.ofNullable(optionalCategory).orElseThrow(
+                () -> new Exception("Cannot find any category !"));
 
         Product productInDB = optionalProduct.get();
         productInDB.setProductName(productRequest.getName());
@@ -91,7 +124,8 @@ public class ProductService implements IProduct {
     @Transactional(rollbackFor = Exception.class)
     public void deleteProductById(UUID productId) throws Exception {
         Optional<Product> optionalProduct = productRepository.findById(productId);
-        Optional.ofNullable(optionalProduct).orElseThrow(() -> new Exception("Cannot find any product !"));
+        Optional.ofNullable(optionalProduct).orElseThrow(
+                () -> new Exception("Cannot find any product !"));
 
         productRepository.deleteById(productId);
     }
@@ -104,7 +138,8 @@ public class ProductService implements IProduct {
     public List<ProductDTO> getAllProductJoinCategoriesByStatus(boolean status)
     {
         List<Map<String, Object>> result = productRepository.getAllProductJoinCategoryByStatus(status);
-        Optional.ofNullable(result).orElseThrow(() -> new RuntimeException("products is empty !"));
+        Optional.ofNullable(result).orElseThrow(
+                () -> new RuntimeException("products is empty !"));
 
         List<ProductDTO> products = new ArrayList<>();
         for (Map<String, Object> x : result) {

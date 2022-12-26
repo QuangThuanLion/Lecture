@@ -31,8 +31,7 @@ public class Category {
             length = 100)
     private String categoryDescription;
 
-//    @JsonManagedReference
-//    @JsonIgnore
+    //@JsonIgnore
     @JsonBackReference("category_reference")
     @OneToMany(
             mappedBy = "category",

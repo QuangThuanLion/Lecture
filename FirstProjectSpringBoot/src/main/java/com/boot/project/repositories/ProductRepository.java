@@ -1,9 +1,11 @@
 package com.boot.project.repositories;
 
 import com.boot.project.entities.Product;
+import jakarta.persistence.QueryHint;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -37,4 +39,8 @@ public interface ProductRepository extends JpaRepository<Product, UUID>
     void updateProductByPriceAndStatus(
             @Param(value = "price") Double price,
             @Param(value = "status") Boolean status);
+
+    @EntityGraph(value = "Products.category", attributePaths = "category")
+    @Query(value = "SELECT p FROM Product p JOIN fetch p.category")
+    List<Product> getAllProductEntityGraph();
 }

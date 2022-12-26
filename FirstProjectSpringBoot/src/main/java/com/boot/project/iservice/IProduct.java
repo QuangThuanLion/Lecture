@@ -7,7 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IProduct {
+    List<Product> getAllListProductLazyAndEagerEntityGraph();
+
     List<Product> getAllProducts();
+
+    List<Product> getAllListProductLazyAndEagerTransaction();
+
+    List<Object[]> getAllListProductLazyAndEager();
 
     Product createProduct(ProductRequest productRequest) throws Exception;
 

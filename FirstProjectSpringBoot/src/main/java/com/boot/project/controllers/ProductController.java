@@ -4,6 +4,7 @@ import com.boot.project.dto.ProductDTO;
 import com.boot.project.entities.Product;
 import com.boot.project.iservice.IProduct;
 import com.boot.project.request.ProductRequest;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class ProductController {
 
     @GetMapping(path = "/products")
     public List<Product> getAllProducts() {
-        List<Product> products = iProduct.getAllProducts();
+        List<Product> products = iProduct.getAllListProductLazyAndEagerTransaction();
         return products;
     }
 
@@ -53,14 +54,12 @@ public class ProductController {
      * @return
      * @throws Exception
      */
-    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping(value = "/products",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createProduct(
-            @RequestBody ProductRequest productRequest)
-            throws Exception
-    {
+         @Valid @RequestBody ProductRequest productRequest) throws Exception {
         try {
            return new ResponseEntity<>(iProduct.createProduct(productRequest), HttpStatus.OK);
         } catch (Exception e) {

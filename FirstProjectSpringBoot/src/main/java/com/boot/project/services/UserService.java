@@ -29,7 +29,6 @@ public class UserService implements IUser {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public User createUser(UserRequest userRequest)  {
-
         final String roleId = userRequest.getRoleId();
         Optional<Role> roleOptional = roleRepository
                 .findById(UUID.fromString(roleId));
@@ -37,7 +36,6 @@ public class UserService implements IUser {
                 .get()
                 .orElseThrow(
                         () -> new NullPointerException("Cannot find any roleId"));
-
         String firstName = Optional
                 .ofNullable(userRequest.getFirstName())
                 .orElse("N/A");
@@ -59,6 +57,7 @@ public class UserService implements IUser {
      * @return
      */
     @Override
+    @Transactional(readOnly = true)
     public List<User> getAll() {
        return userRepository.findAll();
     }
